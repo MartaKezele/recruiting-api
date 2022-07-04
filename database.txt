@@ -1,0 +1,31 @@
+CREATE DATABASE recruiting
+
+CREATE TABLE company (
+    id BIGSERIAL PRIMARY KEY,
+    title VARCHAR(100) NOT NULL,
+    description TEXT NOT NULL 
+)
+
+CREATE TABLE job (
+    id BIGSERIAL PRIMARY KEY,
+    title VARCHAR(100) NOT NULL,
+    description TEXT NOT NULL,
+    company_id BIGINT REFERENCES company(id) NOT NULL 
+)
+
+CREATE TABLE person (
+    id BIGSERIAL PRIMARY KEY,
+    first_name VARCHAR(100) NOT NULL,
+    last_name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    birth_date DATE NOT NULL
+)
+
+CREATE TABLE application (
+    id BIGSERIAL PRIMARY KEY,
+    job_id BIGINT REFERENCES job(id) NOT NULL,
+    person_id BIGINT REFERENCES person(id) NOT NULL 
+)
+
+
+
